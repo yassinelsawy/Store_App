@@ -77,10 +77,10 @@ packages:
     dependency: "direct main"
     description:
       name: fluentui_system_icons
-      sha256: b4e0054ffa198073d2eef6009e79cb7ab770c049f553c39a67ae62523d7286fe
+      sha256: a4f23941abaaea65db9d833d8697af5d058b9a871ae8697bc48d18d7a69e1189
       url: "https://pub.dev"
     source: hosted
-    version: "1.1.246"
+    version: "1.1.248"
   flutter:
     dependency: "direct main"
     description: flutter
@@ -107,6 +107,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "0.0.5"
+  frino_icons:
+    dependency: "direct main"
+    description:
+      name: frino_icons
+      sha256: "2b0d03baa53f2e9193c1ce807fd0a4e52a788d0957fb474f0cc17fcf17c4c8db"
+      url: "https://pub.dev"
+    source: hosted
+    version: "2.0.0"
   google_fonts:
     dependency: "direct main"
     description:
@@ -187,6 +195,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "1.11.0"
+  overlapping_avatar:
+    dependency: "direct main"
+    description:
+      name: overlapping_avatar
+      sha256: a7673926eca2f25b9aef48cfb378bd0ea6a2d566ac1400fa3326c2b2cdf38c21
+      url: "https://pub.dev"
+    source: hosted
+    version: "1.0.2"
   path:
     dependency: transitive
     description:

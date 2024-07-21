@@ -37,7 +37,9 @@ dependencies:
   cupertino_icons: ^1.0.6
   fontresoft: ^0.0.5
   google_fonts: ^6.2.1
-  fluentui_system_icons: ^1.1.246
+  fluentui_system_icons: ^1.1.248
+  overlapping_avatar: ^1.0.2
+  frino_icons: ^2.0.0
 
 dev_dependencies:
   flutter_test:

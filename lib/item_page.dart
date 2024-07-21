@@ -1,15 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:fontresoft/fontresoft.dart';
 
-class HomeScreen4 extends StatefulWidget {
-  const HomeScreen4({super.key});
+class ItemPage extends StatefulWidget {
+  const ItemPage({super.key});
 
   @override
-  State<HomeScreen4> createState() => _HomeScreen4State();
+  State<ItemPage> createState() => _ItemPageState();
 }
 
-class _HomeScreen4State extends State<HomeScreen4> {
+class _ItemPageState extends State<ItemPage> {
   bool isFavourite = false;
+  bool isAdded = true;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -29,7 +30,6 @@ class _HomeScreen4State extends State<HomeScreen4> {
                   isFavourite = !isFavourite;
                 });
               },
-            
             ),
           )
         ],
@@ -155,29 +155,39 @@ class _HomeScreen4State extends State<HomeScreen4> {
         
               ),),
             ),
-            //const SizedBox(height: 20,),
+            //const SizedBox(height: 10,),
             Container(
               height: 70,
               width: 314,
               decoration: BoxDecoration(
-                color: const Color(0xff12AB3D),
+                color: isAdded? const Color(0xffFF470B):const Color(0xff12AB3D),
                 borderRadius: BorderRadius.circular(30)
               ),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  const Icon(Icons.add_task_rounded, color: Colors.white, size: 30,),
-                  const SizedBox(width: 10,),
-                  Center(
-                      child: Text('Added',style: Font.poppins().copyWith(
+              child: Center(
+                child: TextButton(
+                  onPressed: (){
+                    setState(() {
+                      isAdded = !isAdded;
+                    });
+                  },
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Icon(isAdded? Icons.add_shopping_cart_outlined:Icons.add_task_rounded,
+                      color: Colors.white,),
+                      const SizedBox(width: 10,),
+                      Text(
+                        isAdded?'Add to Cart':'Added to Cart',
+                        style: Font.poppins().copyWith(
                         fontSize: 17,
                         fontWeight: FontWeight.w900,
                         color: Colors.white
                       ),),
-                    ),
-                ],
+                    ],
+                  ),
+                ),
               ),
-              ),        
+            ),
           ],
         ),
       ),

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_task_4/homescreen.dart';
+import 'package:flutter_task_4/signin.dart';
 import 'package:fontresoft/fontresoft.dart';
 
 void main() {
@@ -20,9 +20,9 @@ class MyApp extends StatelessWidget {
         
       
       ),
-      title: 'Flutter Demo',
+      title: 'Store App',
       debugShowCheckedModeBanner: false,
-      home: HomeScreen(),
+      home: const SingIn(),
     );
   }
 }
