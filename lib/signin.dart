@@ -1,8 +1,13 @@
 
 import 'package:flutter/material.dart';
+import 'package:flutter_task_4/controller/auth_cont.dart';
+import 'package:flutter_task_4/signup.dart';
 import 'package:fontresoft/fontresoft.dart';
 import 'package:flutter_task_4/home_page.dart';
-
+import 'package:get/get.dart';
+// import 'package:firebase_core/firebase_core.dart';
+// import 'package:firebase_auth/firebase_auth.dart';
+// import 'firebase_options.dart';
 
 class SingIn extends StatefulWidget {
   const SingIn({super.key});
@@ -17,10 +22,10 @@ class _SingInState extends State<SingIn> {
   // ignore: non_constant_identifier_names
   bool _PasswordVisible = true;
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
+  TextEditingController emailController = TextEditingController();
+  TextEditingController passwordController = TextEditingController();
+  AuthController authController = Get.put(AuthController());
   
-  
-  
-
 
   @override
   Widget build(BuildContext context) {
@@ -61,6 +66,7 @@ class _SingInState extends State<SingIn> {
               ),
               const SizedBox(height: 50,),
                 TextFormField(
+                  controller: emailController,
                   decoration: InputDecoration(
                     label: Text('Email', style: Font.poppins().copyWith(
                       fontSize: 16,
@@ -90,19 +96,17 @@ class _SingInState extends State<SingIn> {
                     contentPadding: const EdgeInsets.only(left: 20, top: 14, bottom: 14),
                     ),
                     validator: (value) {
-                      if(value == null || value.isEmpty){
+                      if(!GetUtils.isEmail(value?? '') ) {
                         return 'Please enter your email';
                       }
-                      else if(!value.contains('@') || !value.contains('.com')|| value.length < 6) {
-                        return 'Please enter a valid email';
-                      }
-                      return null;
                     },
                     keyboardType: TextInputType.emailAddress,                    
                   ),
                   
                  const SizedBox(height: 50,),
                 TextFormField(
+
+                  controller: passwordController,
                   obscureText: _PasswordVisible,
                   decoration: InputDecoration(
                     label: Text('Password', style: Font.poppins().copyWith(
@@ -140,13 +144,9 @@ class _SingInState extends State<SingIn> {
                   contentPadding: const EdgeInsets.only(left: 20, top: 14, bottom: 14),
                   ),
                   validator: (value) {
-                    if(value == null || value.isEmpty){
+                    if(!GetUtils.isLengthGreaterOrEqual(value!, 6)){
                       return 'Please enter your password';
                     }
-                    else if(value.length < 6){
-                      return 'Password must be at least 6 characters';
-                    }
-                    return null;
                   },
                   keyboardType: TextInputType.visiblePassword,
                 ),
@@ -185,7 +185,10 @@ class _SingInState extends State<SingIn> {
                   child: TextButton(
                     onPressed: (){
                       if(_formKey.currentState!.validate()){
-                      Navigator.push(context, MaterialPageRoute(builder: (context) => const HomePage()));
+
+                        var email = emailController.text;
+                        var password = passwordController.text;
+                        authController.signin(email, password);
                       }
                     },
                     child: Text(
@@ -241,7 +244,9 @@ class _SingInState extends State<SingIn> {
                     color: Colors.black,
                   ),
                   child: TextButton(
-                    onPressed: (){},
+                    onPressed: (){
+                      Get.to(() => const Signup());
+                    },
                     child: Text(
                       'Create an Account',
                       style: Font.poppins().copyWith(

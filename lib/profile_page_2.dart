@@ -165,7 +165,6 @@ List<Icon> icons = [
                 ),
               ),
             ],
-            
           ),
           Expanded(
             child: ListView.separated(
@@ -198,7 +197,6 @@ List<Icon> icons = [
         ],
       ),
       ),
-
     );
   }
 }

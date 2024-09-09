@@ -40,6 +40,9 @@ dependencies:
   fluentui_system_icons: ^1.1.248
   overlapping_avatar: ^1.0.2
   frino_icons: ^2.0.0
+  get: ^4.6.6
+  firebase_core: ^3.4.0
+  firebase_auth: ^5.2.0
 
 dev_dependencies:
   flutter_test:

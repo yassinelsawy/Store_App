@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_task_4/signin.dart';
+import 'package:flutter_task_4/verify.dart';
+import 'package:get/get.dart';
 class ProfileScreen extends StatefulWidget {
   const ProfileScreen({super.key});
 
@@ -164,7 +166,6 @@ class _ProfileScreenState extends State<ProfileScreen> {
                 ),
               ),
             ],
-            
           ),
           Expanded(
             child: ListView.separated(
@@ -177,11 +178,11 @@ class _ProfileScreenState extends State<ProfileScreen> {
                       title: Text(titles[index], style: const TextStyle(fontSize: 18, fontWeight: FontWeight.w500),),
                       trailing: const Icon(Icons.arrow_forward_ios, size: 20,),
                       onTap: (){
+                        if(index == 0){
+                          Get.to(Verify());
+                        }
                         if(index == 3){
-                          Navigator.pushAndRemoveUntil(context, 
-                          MaterialPageRoute(builder: (context) => const SingIn())
-                          ,(Route<dynamic>route) => false)
-                          ;
+                          Get.to( const SingIn());
                         }
                       },
                     ),

@@ -4,6 +4,7 @@ import 'package:flutter_task_4/orders.dart';
 import 'package:flutter_task_4/profile_page.dart';
 import 'package:flutter_task_4/profile_page_2.dart';
 import 'package:fontresoft/fontresoft.dart';
+import 'package:get/get.dart';
 
 
 
@@ -17,6 +18,7 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage> {
 
+  ValueNotifier<int> index = ValueNotifier<int>(0);
   List<Widget> screens =[
     const HomeScreen(),
     const Orders(),
@@ -30,6 +32,7 @@ class _HomePageState extends State<HomePage> {
     super.initState();
     _appbar = [
       AppBar(
+        backgroundColor: const Color(0xffF2F2F2),
         leading: IconButton(
           icon: const Icon(Icons.menu),
           onPressed: () {},
@@ -66,10 +69,10 @@ class _HomePageState extends State<HomePage> {
             padding: const EdgeInsets.only(right: 31.0),
             child: InkWell(
               onTap: () {
-                Navigator.push(
-                    context,
-                    MaterialPageRoute(builder: (context) => const ProfileScreen2()),
-                  );
+                // setState(() {
+                //   index.value = 2;
+                // });
+                Get.to(const ProfileScreen2());
               },
               child: const CircleAvatar(
                 radius: 20,
@@ -80,6 +83,7 @@ class _HomePageState extends State<HomePage> {
         ],
       ),
       AppBar(
+        backgroundColor: const Color(0xffF2F2F2),
         automaticallyImplyLeading: false,
         title: Text(
           'Orders',
@@ -92,19 +96,29 @@ class _HomePageState extends State<HomePage> {
         centerTitle: true,
       ),
       AppBar(
+        backgroundColor: const Color(0xffF2F2F2),
         automaticallyImplyLeading: false,
         leading: IconButton(icon: const Icon(Icons.menu_rounded), onPressed: () {}),
       ),
     ];
+  }
+  @override
+  void didChangeDependencies() {
+    super.didChangeDependencies();
+    index.addListener(() {
+      setState(() {
+        index.value = index.value;
+
+      });
+    });
   }
 
   @override
   Widget build(BuildContext context) {
     return  Scaffold(
       backgroundColor: const Color(0xffF2F2F2),
-      appBar: _appbar[_selectedIndex] as PreferredSizeWidget?,
-      body:  screens[_selectedIndex],
-
+      appBar: _appbar[index.value] as PreferredSizeWidget?,
+      body:  screens[index.value],
       bottomNavigationBar: BottomNavigationBar(
         items: const <BottomNavigationBarItem>[
           BottomNavigationBarItem(
@@ -120,15 +134,15 @@ class _HomePageState extends State<HomePage> {
             label: 'Profile',
           ),
         ],
-        currentIndex: _selectedIndex,
+        currentIndex: index.value,
         selectedItemColor: const Color(0xffFA4A0C),
         onTap: (value){
           setState(() {
-            _selectedIndex = value;
+            index.value = value;
           });
         }
       ),
       );
   }
-    int _selectedIndex = 0;
+   
 }
