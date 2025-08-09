@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_task_4/controller/auth_cont.dart';
 import 'package:flutter_task_4/signin.dart';
 import 'package:flutter_task_4/verify.dart';
 import 'package:get/get.dart';
@@ -17,6 +18,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
     const Icon(Icons.info_outline, size: 39, color: Color(0xff9A9A9D),),
     const Icon(Icons.logout_outlined, size: 39, color: Color(0xff9A9A9D),),
   ];
+  AuthController authController = Get.put(AuthController());
 
   List<String> titles = [
     "Settings",
@@ -182,7 +184,8 @@ class _ProfileScreenState extends State<ProfileScreen> {
                           Get.to(Verify());
                         }
                         if(index == 3){
-                          Get.to( const SingIn());
+                          authController.signout();
+                          Get.to(SingIn());
                         }
                       },
                     ),

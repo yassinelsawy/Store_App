@@ -1,5 +1,5 @@
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:firebase_core/firebase_core.dart';
+//import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_task_4/controller/auth_cont.dart';
 import 'package:flutter_task_4/home_page.dart';
@@ -43,7 +43,6 @@ class _SignupState extends State<Signup> {
             children: [
               TextFormField(
                 controller: emailController,
-
                 decoration: const InputDecoration(
                   hintText: 'Email',
                 ),
@@ -95,10 +94,6 @@ class _SignupState extends State<Signup> {
                 },
                 child: const Text('Sign Up'),
               ),
-
-
-
-              
               TextButton(onPressed: Get.back
               , child: const Text('Already have an account? Sign In'))
             ],

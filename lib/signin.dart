@@ -99,6 +99,7 @@ class _SingInState extends State<SingIn> {
                       if(!GetUtils.isEmail(value?? '') ) {
                         return 'Please enter your email';
                       }
+                      return null;
                     },
                     keyboardType: TextInputType.emailAddress,                    
                   ),
@@ -147,6 +148,7 @@ class _SingInState extends State<SingIn> {
                     if(!GetUtils.isLengthGreaterOrEqual(value!, 6)){
                       return 'Please enter your password';
                     }
+                    return null;
                   },
                   keyboardType: TextInputType.visiblePassword,
                 ),

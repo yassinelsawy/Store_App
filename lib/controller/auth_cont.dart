@@ -11,10 +11,10 @@ class AuthController extends GetxController {
   void signup(String email, String password) async{
     //print('🚀🚀🚀🚀');
     try {
-      await FirebaseAuth.instance.createUserWithEmailAndPassword(
-        email: email,
-        password: password,
-      );
+    final credential = await FirebaseAuth.instance.createUserWithEmailAndPassword(
+    email: email,
+    password: password,
+  );
       Get.to(Verify());
       //print(credential);
       // Get.snackbar('Account created', 'Account created successfully',
@@ -82,7 +82,7 @@ class AuthController extends GetxController {
    Future<void> verifyEmail() async {
     try {
       User? user = FirebaseAuth.instance.currentUser;
-      await user?.reload();
+      await user!.sendEmailVerification();
       user = FirebaseAuth.instance.currentUser;
 
       if (user != null && user.emailVerified) {
@@ -97,5 +97,11 @@ class AuthController extends GetxController {
       Get.snackbar('Error', 'An error occurred: $e',
           snackPosition: SnackPosition.TOP);
     }
+  }
+  void signout() async {
+    await FirebaseAuth.instance.signOut();
+    Get.snackbar('Sign out', 'Sign out successfully',
+          snackPosition: SnackPosition.TOP);
+    Get.to(() => const HomePage());
   }
 }
