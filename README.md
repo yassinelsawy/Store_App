@@ -1,16 +1,68 @@
-# UI Design
+# Store App
 
-A new Flutter project.
+A modern Flutter application for browsing and purchasing products. This app demonstrates clean UI design, state management, and integration with backend services.
+
+## Features
+
+- Browse products by category
+- Product detail pages
+- Add to cart and checkout flow
+- Responsive UI for mobile devices
+- State management (Provider, Bloc, or Riverpod)
+- API integration for product data
 
 ## Getting Started
 
-This project is a starting point for a Flutter application.
+### Prerequisites
 
-A few resources to get you started if this is your first Flutter project:
+- [Flutter SDK](https://docs.flutter.dev/get-started/install)
+- Android Studio or VS Code
+- An emulator or physical device
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+### Installation
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+1. **Clone the repository:**
+   ```sh
+   git clone https://github.com/your-username/store_app.git
+   cd store_app
+   ```
+
+2. **Install dependencies:**
+   ```sh
+   flutter pub get
+   ```
+
+3. **Run the app:**
+   ```sh
+   flutter run
+   ```
+
+## Project Structure
+
+```
+lib/
+├── main.dart
+├── models/
+├── screens/
+├── widgets/
+├── services/
+└── providers/
+```
+
+- `models/`: Data models (e.g., Product, Cart)
+- `screens/`: App screens (Home, Product Details, Cart, etc.)
+- `widgets/`: Reusable UI components
+- `services/`: API and data services
+- `providers/`: State management
+
+## Contributing
+
+Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.
+
+## License
+
+[MIT](LICENSE)
+
+---
+
+*This project is a starting point for a Flutter application. For more resources, see
